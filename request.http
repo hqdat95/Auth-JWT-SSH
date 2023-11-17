@@ -1,0 +1,45 @@
+@login_access_token = {{login.response.body.result.accessToken}}
+@login_refresh_token = {{login.response.body.result.refreshToken}}
+@refresh_access_token = {{refresh.response.body.result.accessToken}}
+
+# @name home
+GET {{URL}}
+Content-Type: application/application/x-www-form-urlencoded
+Authorization: Bearer {{login_access_token}}
+
+###
+
+# @name register
+POST {{URL}}/{{VER}}/register
+Content-Type: application/json
+
+{
+  "username": "User_1",
+  "email": "User_1@example.com",
+  "password": "User@12"
+}
+
+###
+
+# @name login
+POST {{URL}}/{{VER}}/login
+Content-Type: application/json
+
+{
+  "email": "User_1@example.com",
+  "password": "User@12"
+}
+
+###
+
+# @name refresh
+POST {{URL}}/{{VER}}/token/refresh
+Content-Type: application/json
+Authorization: Bearer {{login_refresh_token}}
+
+###
+
+# @name logout
+POST {{URL}}/{{VER}}/logout
+Content-Type: application/json
+Authorization: Bearer {{refresh_access_token}}

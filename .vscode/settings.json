@@ -1,0 +1,10 @@
+{
+  "rest-client.environmentVariables": {
+    "$shared": {},
+
+    "AUTH-SSH": {
+      "URL": "http://localhost:3000",
+      "VER": "v1/api"
+    }
+  }
+}
